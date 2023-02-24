@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="404, 凌风">
-    <meta name="description" content="凌风">
+    <meta name="keywords" content="Docker PHP 入门实践(一), 凌风">
+    <meta name="description" content="
+第一章 .  Docker 的介绍Docker已迅速成为首选的容器引擎，并且它正在快速的占领市场。该系列的教程将一步一步引导你使用Docker构建一个PHP Web应用程序，同时也会在其中穿插解释一些Docker&amp;amp;PHP的基础知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>404 | 凌风</title>
+    <title>Docker PHP 入门实践(一) | 凌风</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,9 +39,7 @@
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
-
 
 
 
@@ -311,29 +310,16 @@
 
 </header>
 
-    <style type="text/css">
-    /* don't remove. */
-    .about-cover {
-        height: 90.2vh;
-    }
-</style>
-<div class="bg-cover pd-header about-cover">
-    <div class="container">
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+            <div class="col s12 m12 l12">
                 <div class="brand">
-                    <div class="title center-align">
-                        404 Sorry 您找的页面不存在！
-                    </div>
-                    <div class="title center-align">
-                        试试右上角的<span style="color:blue;font-weight:bold">搜索</span>功能？
-                    </div>
-                    <div class="title center-align">
-                        <a href="/" target="_blank">返回首页</a>
-                    </div>
-                    <div class="description center-align">
-                        Oops～，我崩溃了！找不到你想要的页面 :(
-                    </div>
+                    <h1 class="description center-align post-title">Docker PHP 入门实践(一)</h1>
                 </div>
             </div>
         </div>
@@ -341,11 +327,403 @@
 </div>
 
 
-    <script>
-        // 每天切换 banner 图.  Switch banner image every day.
-        var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PHP/">
+                                <span class="chip bg-color">PHP</span>
+                            </a>
+                        
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
+                            </a>
+                        
+                            <a href="/tags/ThinkPHP/">
+                                <span class="chip bg-color">ThinkPHP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-02-24
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    794
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><a name="ShQnI"></a></p>
+<h1 id="第一章-Docker-的介绍"><a href="#第一章-Docker-的介绍" class="headerlink" title="第一章 .  Docker 的介绍"></a>第一章 .  Docker 的介绍</h1><p>Docker已迅速成为首选的容器引擎，并且它正在快速的占领市场。该系列的教程将一步一步引导你使用Docker构建一个PHP Web应用程序，同时也会在其中穿插解释一些Docker&amp;PHP的基础知识。</p>
+<p>在该系列的教程中，会包括以下知识点：</p>
+<ul>
+<li>使用Composer安装依赖项.</li>
+<li>使用Docker构建PHP环境.</li>
+<li>将数据保存到MySQL数据库.</li>
+<li>Thinkphp6 框架的使用</li>
+<li>如何对接第三方API</li>
+<li>……</li>
+<li><br></li>
+</ul>
+<p>读这本书需要有一定PHP开发经验；知道如何打开计算机的终端，并从中运行PHP脚本；并且抽出一上午或一下午的时间来上手实践。最重要的是你要安装<a target="_blank" rel="noopener" href="https://www.docker.com/community-edition">docker</a>。</p>
+<p><a name="q68K1"></a></p>
+<h2 id="Docker-是什么"><a href="#Docker-是什么" class="headerlink" title="Docker 是什么?"></a>Docker 是什么?</h2><p>Docker是一个管理和运行容器的平台。容器类似于<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_machine">虚拟机</a>，但它们实际上并不模拟整个操作系统。相反，您运行的所有容器与主机共享相同的底层内核，这意味着它们比虚拟机轻得多。因此，容器非常高效，并且大多数实际应用程序同时运行多个容器。Docker帮助您使用容器的<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/userguide/networking/">networks</a>将这些容器链接在一起，并帮助您使用<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Docker Compose</a>配置文件定义容器。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/267928/1633934410244-c4a6edce-214e-4abe-9ce3-4d27408da13d.png#height=720&amp;id=ufa27276f&amp;name=diagram1.png&amp;originHeight=720&amp;originWidth=960&amp;originalType=binary&amp;ratio=1&amp;size=78194&amp;status=done&amp;style=none&amp;width=960" alt="diagram1.png"><br><a name="K7b21"></a></p>
+<h2 id="为什么使用-Docker"><a href="#为什么使用-Docker" class="headerlink" title="为什么使用 Docker?"></a>为什么使用 Docker?</h2><p>企业使用一项技术是为了解决当前企业环境中存在的某个痛点。目前整个软件行业存在着以下几个痛点。<br>（1）软件更新发布及部署低效，过程烦琐且需要人工介入。<br>（2）环境一致性难以保证。<br>（3）不同环境之间迁移成本太高。<br>Docker 在很大程度上解决了上述问题：<br>首先，Docker 的使用十分简单，从开发的角度来看就是“三步走”：构建、运输、运行。其中，关键步骤是构建环节，即打包镜像文件。但是从测试和运维的角度来看，那就只有两步：复制、运行。有了这个镜像文件，想复制到哪里运行都可以，完全和平台无关。<br>Docker 这种容器技术隔离出了独立的运行空间，不会和其他应用争用系统资源，不需要考虑应用之间的相互影响。<br>其次，因为在构建镜像时就处理完了服务程序对于系统的所有依赖，所以在使用时，可以忽略原本程序的依赖以及开发语言。对测试和运维人员而言，可以更专注于自己的业务内容。<br>最后，Docker 为开发者提供了一种开发环境的管理办法，帮助测试人员保证环境的同步，为运维人员提供了可移植的标准化部署流程。</p>
+<p><a name="8cc76ce1"></a></p>
+<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><p>Nickname: clyde-cn ( saviorlv )<br>Skill: PHP Python Golang Vue<br>Email: <a href="mailto:1042080686@qq.com">1042080686@qq.com</a><br>Desc: 90后 IT 民工</p>
+<p><a name="d7945270"></a></p>
+<h2 id="关于许可证"><a href="#关于许可证" class="headerlink" title="关于许可证"></a>关于许可证</h2><p>© 2020-09-27, 拯救伏地魔（saviorlv）</p>
+<p>版权所有。未经版权所有者的书面许可，不得以任何形式或通过任何电子或机械方式复制本教程的任何部分。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">sunmking</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://sunmking.com/2023/02/24/docker-php-ru-men-shi-jian-yi/">http://sunmking.com/2023/02/24/docker-php-ru-men-shi-jian-yi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">sunmking</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
     </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PHP/">
+                                    <span class="chip bg-color">PHP</span>
+                                </a>
+                            
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
+                                </a>
+                            
+                                <a href="/tags/ThinkPHP/">
+                                    <span class="chip bg-color">ThinkPHP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/02/24/docker-php-ru-men-shi-jian-er/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Docker PHP 入门实践(二)">
+                        
+                        <span class="card-title">Docker PHP 入门实践(二)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                    <a href="/tags/ThinkPHP/">
+                        <span class="chip bg-color">ThinkPHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/02/24/docker-php-ru-men-shi-jian-yi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Docker PHP 入门实践(一)">
+                        
+                        <span class="card-title">Docker PHP 入门实践(一)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PHP/">
+                        <span class="chip bg-color">PHP</span>
+                    </a>
+                    
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                    <a href="/tags/ThinkPHP/">
+                        <span class="chip bg-color">ThinkPHP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    
+
+</main>
+
 
 
 
