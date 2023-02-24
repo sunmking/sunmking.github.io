@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker PHP 入门实践(一), 凌风">
+    <meta name="keywords" content="Docker PHP 入门实践(二), 凌风">
     <meta name="description" content="
-第一章 .  Docker 的介绍Docker已迅速成为首选的容器引擎，并且它正在快速的占领市场。该系列的教程将一步一步引导你使用Docker构建一个PHP Web应用程序，同时也会在其中穿插解释一些Docker&amp;amp;PHP的基础知识">
+第二章 .  在 Docker 中运行 PHP 脚本在我们开始构建应用程序之前，先了解一下如何在Docker中运行一个PHP脚本。我们从编写一个经典的Hello World开始PHP脚本如下:
+&amp;lt;?php echo &#34;Hello W">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker PHP 入门实践(一) | 凌风</title>
+    <title>Docker PHP 入门实践(二) | 凌风</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -314,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker PHP 入门实践(一)</h1>
+                    <h1 class="description center-align post-title">Docker PHP 入门实践(二)</h1>
                 </div>
             </div>
         </div>
@@ -374,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-24
+                    2021-02-24
                 </div>
                 
 
@@ -383,7 +384,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    794
+                    1.5k
                 </div>
                 
 
@@ -404,26 +405,49 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a name="ShQnI"></a></p>
-<h1 id="第一章-Docker-的介绍"><a href="#第一章-Docker-的介绍" class="headerlink" title="第一章 .  Docker 的介绍"></a>第一章 .  Docker 的介绍</h1><p>Docker已迅速成为首选的容器引擎，并且它正在快速的占领市场。该系列的教程将一步一步引导你使用Docker构建一个PHP Web应用程序，同时也会在其中穿插解释一些Docker&amp;PHP的基础知识。</p>
-<p>在该系列的教程中，会包括以下知识点：</p>
+<h1 id="第二章-在-Docker-中运行-PHP-脚本"><a href="#第二章-在-Docker-中运行-PHP-脚本" class="headerlink" title="第二章 .  在 Docker 中运行 PHP 脚本"></a>第二章 .  在 Docker 中运行 PHP 脚本</h1><p>在我们开始构建应用程序之前，先了解一下如何在Docker中运行一个PHP脚本。我们从编写一个经典的Hello World开始<br>PHP脚本如下:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Hello World!"</span><span class="token punctuation">;</span> </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>你可以在虚拟机或者笔记本的终端上运行这个脚本(假设你已经安装了PHP)。你应该可以看到终端输出 Hello World !<br><a name="THr0o"></a></p>
+<h2 id="Docker-镜像介绍"><a href="#Docker-镜像介绍" class="headerlink" title="Docker 镜像介绍"></a>Docker 镜像介绍</h2><p>Docker 在一个容器中运行每个进程。所有这些容器都在主机上运行，这是你在这本书里的电脑。一旦应用程序准备好进入生产环境，服务器(或多个服务器)将充当 Docker 主机。<br>每个运行的容器后面都有一个“镜像”。Docker 镜像是由软件开发人员使用 dockerfile 创建和维护的。换句话说，如果您想从头创建自己的 Docker 镜像，那么首先要创建一个新的Dockerfile，然后“构建”一个镜像，然后在容器中 “运行” 该镜像。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/267928/1633934836324-d3dda23c-25e9-422e-b638-6362b9ec5069.png#clientId=u3aeacf32-7c17-4&amp;from=ui&amp;id=u5adf1e16&amp;name=diagram2.png&amp;originHeight=512&amp;originWidth=1185&amp;originalType=binary&amp;ratio=1&amp;size=59486&amp;status=done&amp;style=none&amp;taskId=ud0304b0f-dc0d-4a28-8c29-ed176185a2d" alt="diagram2.png"><br>通常我们不需要从头构建镜像。大多数流行的软件(包括PHP)都有由软件开发人员或感兴趣的社区维护的镜像。在这没必要构建一个全新的镜像，但是稍后我们将会讲解到如何通过编写自己的 Dockerfile 来扩展现有镜像。<br>Docker 镜像可以构建并存储在主机上，也可以保存在远程 “registry” 中。除了维护核心的Docker 平台之外，Docker 团队还维护一个名为 <a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a> 镜像管理平台，在这里可以免费存储公共镜像。大多数开源软件团队在 Docker Hub 上托管官方镜像，包括 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/php/">PHP</a>。<br><a name="bVQTL"></a></p>
+<h2 id="获取PHP-Docker-镜像"><a href="#获取PHP-Docker-镜像" class="headerlink" title="获取PHP Docker 镜像"></a>获取PHP Docker 镜像</h2><p>为了在容器中运行 hello.php 脚本，首先需要为 pull 一个 PHP 镜像，选择 PHP 的最新稳定版本。在终端中执行:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull php:latest <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在你的终端应该可以看到类似这样的东西:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">latest: Pulling from library/php
+7d63c13d9b9b: Pull complete
+24b15dfd3cfa: Pull complete
+64625c2e355f: Pull complete
+275a8dd8f358: Pull complete
+25140c092894: Pull complete
+48e615a81d63: Pull complete
+5b1d56720240: Pull complete
+16d610fad528: Pull complete
+68ac649f8fe5: Pull complete<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这表示 Docker 正在拉取 PHP 最新版镜像。当拉取完成时，在终端会显示一个如下的状态，表明它已经获取了最新的版本:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Digest: sha256:16573d7e56efa328e59066205870e66c0ad851491df9d0ee66c05bbe4961f8ed
+Status: Downloaded newer image <span class="token keyword">for</span> php:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>注意:“latest”标记是大多数 Docker 映像用于其软件的最新版本的标准约定。不要不加区分地使用“latest”，因为它会自动检索到“latest”版本，即使有重大的版本更改。<br>因为 hello.php 脚本很简单，所以我们使用哪个版本的PHP并不重要，但是如果我们需要为一个现有项目运行一个旧版本的PHP呢? 这是 Docker 真正的亮点，因为我们只需要在运行Docker pull时指定PHP版本。例如，下载PHP 5.6镜像，只需运行如下代码：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull php:5.6 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我们也可以使用这个方法来获得最新的、未发布的PHP版本(假设 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/php/">PHP registry’s list</a> 中至少有一个Beta 版本)。这对于需要经常使用多个 PHP 版本的开发人员非常有帮助。<br><a name="y5h5M"></a></p>
+<h2 id="将代码放入容器中"><a href="#将代码放入容器中" class="headerlink" title="将代码放入容器中"></a>将代码放入容器中</h2><p>为了更好的往下进行，您必须稍微了解 Docker 如何访问主机系统上的文件。一个正在运行的容器不能直接读取或写入文件到您的计算机—容器本质上它是独立的系统。相反，我们要运行的容器数据来自于主机中挂载的 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/admin/volumes/volumes/">volume</a> 或者在构建镜像时添加代码。<br>在本书的后面，我们将介绍如何用 Dockerfiles 构建 Docker 映像并以这种方式添加代码，但是对于这个简单的 Hello World! 示例，我们将 hello.php 的目录文件挂载到我们需要运行的PHP容器中。<br><a name="EIIMG"></a></p>
+<h2 id="在Docker中运行Hello-World脚本"><a href="#在Docker中运行Hello-World脚本" class="headerlink" title="在Docker中运行Hello World脚本"></a>在Docker中运行Hello World脚本</h2><p>现在我们已经从Docker Hub中获取了一些PHP镜像，并且对Docker如何使用卷有了一些了解，我们可以在终端的容器中运行我们的脚本:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-v</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>:/app php:latest php /app/hello.php <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果一切正确，应该可以看到输出Hello World!。恭喜你在Docker中运行了第一个PHP脚本!</p>
+<p><a name="nDp80"></a></p>
+<h3 id="它是如何运行的"><a href="#它是如何运行的" class="headerlink" title="它是如何运行的?"></a>它是如何运行的?</h3><p>让我们回顾一下Docker命令以及它的含义:</p>
 <ul>
-<li>使用Composer安装依赖项.</li>
-<li>使用Docker构建PHP环境.</li>
-<li>将数据保存到MySQL数据库.</li>
-<li>Thinkphp6 框架的使用</li>
-<li>如何对接第三方API</li>
-<li>……</li>
-<li><br></li>
+<li>docker run - 这是Docker的命令 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/run/">在新容器中运行命令</a>.有很多选项可供您输入，但我们将从基础知识开始。</li>
+<li>–rm - 这告诉Docker在命令运行后“删除”容器。 或者，您可以保存容器以再次运行它，但如果您最终没有删除容器，它会占用空间，因此在大多数情况下最好设置删除选项。</li>
+<li>-v $(pwd):/app - 这是Docker的命令 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/tutorials/dockervolumes/">mount a volume</a>. 通常，您将路径传递到主机系统、冒号、以及容器中文件夹的路径上。 卷是一个强大的工具，但是对于这个简单的示例，我们只是将当前目录(使用$(pwd))从终端挂载到新的 Docker 容器中的 /app 目录中。</li>
+<li>php:latest - 这表示我们为这个容器使用的镜像。您也可以指定其他的PHP镜像(例如:PHP:7.0或PHP:5.6)来使用该语言的特定版本。</li>
+<li>php /app/hello.php - 最后，这是 Docker 将在容器中运行的命令。由于我们将代码挂载在容器的/app目录中，因此必须从该目录运行脚本。</li>
 </ul>
-<p>读这本书需要有一定PHP开发经验；知道如何打开计算机的终端，并从中运行PHP脚本；并且抽出一上午或一下午的时间来上手实践。最重要的是你要安装<a target="_blank" rel="noopener" href="https://www.docker.com/community-edition">docker</a>。</p>
-<p><a name="q68K1"></a></p>
-<h2 id="Docker-是什么"><a href="#Docker-是什么" class="headerlink" title="Docker 是什么?"></a>Docker 是什么?</h2><p>Docker是一个管理和运行容器的平台。容器类似于<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Virtual_machine">虚拟机</a>，但它们实际上并不模拟整个操作系统。相反，您运行的所有容器与主机共享相同的底层内核，这意味着它们比虚拟机轻得多。因此，容器非常高效，并且大多数实际应用程序同时运行多个容器。Docker帮助您使用容器的<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/userguide/networking/">networks</a>将这些容器链接在一起，并帮助您使用<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Docker Compose</a>配置文件定义容器。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/267928/1633934410244-c4a6edce-214e-4abe-9ce3-4d27408da13d.png#height=720&amp;id=ufa27276f&amp;name=diagram1.png&amp;originHeight=720&amp;originWidth=960&amp;originalType=binary&amp;ratio=1&amp;size=78194&amp;status=done&amp;style=none&amp;width=960" alt="diagram1.png"><br><a name="K7b21"></a></p>
-<h2 id="为什么使用-Docker"><a href="#为什么使用-Docker" class="headerlink" title="为什么使用 Docker?"></a>为什么使用 Docker?</h2><p>企业使用一项技术是为了解决当前企业环境中存在的某个痛点。目前整个软件行业存在着以下几个痛点。<br>（1）软件更新发布及部署低效，过程烦琐且需要人工介入。<br>（2）环境一致性难以保证。<br>（3）不同环境之间迁移成本太高。<br>Docker 在很大程度上解决了上述问题：<br>首先，Docker 的使用十分简单，从开发的角度来看就是“三步走”：构建、运输、运行。其中，关键步骤是构建环节，即打包镜像文件。但是从测试和运维的角度来看，那就只有两步：复制、运行。有了这个镜像文件，想复制到哪里运行都可以，完全和平台无关。<br>Docker 这种容器技术隔离出了独立的运行空间，不会和其他应用争用系统资源，不需要考虑应用之间的相互影响。<br>其次，因为在构建镜像时就处理完了服务程序对于系统的所有依赖，所以在使用时，可以忽略原本程序的依赖以及开发语言。对测试和运维人员而言，可以更专注于自己的业务内容。<br>最后，Docker 为开发者提供了一种开发环境的管理办法，帮助测试人员保证环境的同步，为运维人员提供了可移植的标准化部署流程。</p>
-<p><a name="8cc76ce1"></a></p>
-<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><p>Nickname: clyde-cn ( saviorlv )<br>Skill: PHP Python Golang Vue<br>Email: <a href="mailto:1042080686@qq.com">1042080686@qq.com</a><br>Desc: 90后 IT 民工</p>
-<p><a name="d7945270"></a></p>
-<h2 id="关于许可证"><a href="#关于许可证" class="headerlink" title="关于许可证"></a>关于许可证</h2><p>© 2020-09-27, 拯救伏地魔（saviorlv）</p>
-<p>版权所有。未经版权所有者的书面许可，不得以任何形式或通过任何电子或机械方式复制本教程的任何部分。</p>
+<p>现在您已经对 Docker 有了基本的了解，并且可以在容器中运行 PHP 脚本，现在是时候构建一些更有用、更有趣的东西了。可以简单的休息一下，并阅读一些关于 Docker 的资料(<a target="_blank" rel="noopener" href="https://doc/">https://doc</a>,docker.com/) ，当您准备好之后，请继续阅读本文，开始在 Docker 中构建 PHP web 应用程序。</p>
 
                 
             </div>
@@ -450,7 +474,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sunmking.com/2023/02/24/docker-php-ru-men-shi-jian-yi/">http://sunmking.com/2023/02/24/docker-php-ru-men-shi-jian-yi/</a>
+                    <a href="http://sunmking.com/2021/02/24/docker-php-ru-men-shi-jian-er/">http://sunmking.com/2021/02/24/docker-php-ru-men-shi-jian-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -580,13 +604,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/24/docker-php-ru-men-shi-jian-er/">
+                <a href="/2021/02/26/docker-php-ru-men-shi-jian-san/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Docker PHP 入门实践(二)">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Docker PHP 入门实践(三)">
                         
-                        <span class="card-title">Docker PHP 入门实践(二)</span>
+                        <span class="card-title">Docker PHP 入门实践(三)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -597,7 +621,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-26
                         </span>
                         <span class="publish-author">
                             
@@ -634,10 +658,10 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/24/docker-php-ru-men-shi-jian-yi/">
+                <a href="/2020/12/29/docker-php-ru-men-shi-jian-yi/">
                     <div class="card-image">
                         
                         
@@ -654,7 +678,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-29
                             </span>
                         <span class="publish-author">
                             
@@ -668,7 +692,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
